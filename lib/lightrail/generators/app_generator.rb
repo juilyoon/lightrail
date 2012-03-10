@@ -1,31 +1,8 @@
 require 'rails/generators'
 require 'rails/generators/app_base'
+require 'rails/generators/rails/app/app_generator'
 
 module Lightrail
-  module ActionMethods
-    attr_reader :options
-
-    def initialize(generator)
-      @generator = generator
-      @options   = generator.options
-    end
-
-    private
-      %w(template copy_file directory empty_directory inside
-         empty_directory_with_gitkeep create_file chmod shebang).each do |method|
-        class_eval <<-RUBY, __FILE__, __LINE__ + 1
-          def #{method}(*args, &block)
-            @generator.send(:#{method}, *args, &block)
-          end
-        RUBY
-      end
-
-      # TODO: Remove once this is fully in place
-      def method_missing(meth, *args, &block)
-        @generator.send(meth, *args, &block)
-      end
-  end
-
   # The application builder allows you to override elements of the application
   # generator without being forced to reverse the operations of the default
   # generator.
@@ -144,6 +121,7 @@ module Lightrail
 
     class AppGenerator < Rails::Generators::AppBase
       add_shared_options_for "application"
+      source_root File.expand_path("../templates", __FILE__)
 
       # Add bin/rails options
       class_option :version, :type => :boolean, :aliases => "-v", :group => :rails,
@@ -292,7 +270,7 @@ module Lightrail
       end
 
       def get_builder_class
-        defined?(::AppBuilder) ? ::AppBuilder : Rails::AppBuilder
+        defined?(::AppBuilder) ? ::AppBuilder : Lightrail::AppBuilder
       end
     end
   end
