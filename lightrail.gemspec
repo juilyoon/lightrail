@@ -5,9 +5,9 @@ Gem::Specification.new do |gem|
   gem.name        = 'lightrail'
   gem.version     = Lightrail::VERSION
   gem.platform    = Gem::Platform::RUBY
-  gem.authors     = ['Carl Lerche', 'José Valim', 'Tony Arcieri']
+  gem.authors     = ['José Valim', 'Carl Lerche', 'Tony Arcieri']
   gem.email       = ['me@carllerche.com', 'jose.valim@gmail.com', 'tony.arcieri@gmail.com']
-  gem.homepage    = 'http://github.com/tarcieri/lightrail'
+  gem.homepage    = 'http://github.com/lightness/lightrail'
   gem.summary     = 'Slim Rails stack for JSON services'
   gem.description = 'Lightrail slims Rails down to the bare essentials great JSON web services crave'
   gem.files        = Dir["lib/**/*.rb"]
