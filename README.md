@@ -56,6 +56,43 @@ It removes several irrelevant modules and also provides following additional beh
     It is simply a convenience method for `render json: errors, status: 422`.
     With the `halt` mechanism above you'll see this common pattern: `halt errors: { request: "invalid" }`.
 
+Lightrail also provides a wrapper system for generating JSON responses (see Lightrail::Wrapper below)
+`Lightrail::Wrapper::Controller` provides the following methods in controllers:
+
+  * `json resources`: Given a resource (or an array of resources) it will find the proper wrapper and render it.
+    Any include given at `params[:include]` will be validated and passed to the underlying wrapper.
+    Consider the following action:
+
+    ``` ruby
+    def last
+      json Account.last
+    end
+    ```
+
+    When accessed as `/accounts/last` it won't return any credit card or subscription resource in the JSON, unless it is given explicitly as `/accounts/last?include=credit_cards,subscriptions` (in plural).
+
+    In order for the `json` method to work, a `wrapper_scope` needs to be defined.
+    You can usually define it in your `ApplicationController` as follow:
+
+    ``` ruby
+    def wrapper_scope
+      current_user
+    end
+    ```
+
+  * `errors(resource)` is a method that makes pair with `json(resource)`.
+    It basically receives a resource and render its errors.
+    For instance, `errors(account)` will return `:errors => { :account => account.errors }`;
+
+  * `wrap_array(resources)` as the `json` method accepts extra associations to be included through `params[:include]` we need to be careful to not do `N+1` db queries.
+    This can be fixed by using the `wrap_array` method that will automatically wrap the given array and preload all associations.
+    For instance, you want will to do this in your `index` actions:
+
+    ``` ruby
+    def index
+      json wrap_array(current_user.accounts.active.all)
+    end
+    ```
 
 Lightrail::Wrapper
 ------------------
@@ -139,46 +176,6 @@ AccountWrapper.new(@account, current_user).render include: [:credit_card]
 ```
 
 Although most of the times this will be done automatically by the controller.
-
-**Using The Wrapper In The Controller**
-
-`Lightrail::Wrapper::Controller` provides several facilities to use wrappers from the controller:
-
-  * `#json(resources)` is the main method.
-    Given a resource (or an array of resources) it will find the proper wrapper and render it.
-    Any include given at `params[:include]` will be validated and passed to the underlying wrapper.
-    Consider the following action:
-
-    ``` ruby
-    def last
-      json Account.last
-    end
-    ```
-
-    When accessed as `/accounts/last` it won't return any credit card or subscription resource in the JSON, unless it is given explicitly as `/accounts/last?include=credit_cards,subscriptions` (in plural).
-
-    In order for the `json` method to work, a `wrapper_scope` needs to be defined.
-    You can usually define it in your `ApplicationController` as follow:
-
-    ``` ruby
-    def wrapper_scope
-      current_user
-    end
-    ```
-
-  * `errors(resource)` is a method that makes pair with `json(resource)`.
-    It basically receives a resource and render its errors.
-    For instance, `errors(account)` will return `:errors => { :account => account.errors }`;
-
-  * `wrap_array(resources)` as the `json` method accepts extra associations to be included through `params[:include]` we need to be careful to not do `N+1` db queries.
-    This can be fixed by using the `wrap_array` method that will automatically wrap the given array and preload all associations.
-    For instance, you want will to do this in your `index` actions:
-
-    ``` ruby
-    def index
-      json wrap_array(current_user.accounts.active.all)
-    end
-    ```
 
 **Active Record Extensions**
 
