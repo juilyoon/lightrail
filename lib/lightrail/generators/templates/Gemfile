@@ -1,14 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'lightrail', '<%= Lightrail::VERSION %>'
-
-# Bundle edge Rails instead:
-# gem 'railties', :git => 'https://github.com/rails/rails.git'
-
-<%= database_gemfile_entry -%>
+gem 'activerecord'
+gem 'activeresource'
+gem 'actionmailer'
 
 <%= "gem 'jruby-openssl'\n" if defined?(JRUBY_VERSION) -%>
-
 <%= assets_gemfile_entry %>
 <%= javascript_gemfile_entry %>
 

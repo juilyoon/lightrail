@@ -1,16 +1,13 @@
 require File.expand_path('../boot', __FILE__)
 
-<% if include_all_railties? -%>
-require 'rails/all'
-<% else -%>
+require 'lightrail/railtie'
+
 # Pick the frameworks you want:
-<%= comment_if :skip_active_record %>require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
+require "active_record/railtie"
 require "active_resource/railtie"
-<%= comment_if :skip_sprockets %>require "sprockets/railtie"
-<%= comment_if :skip_test_unit %>require "rails/test_unit/railtie"
-<% end -%>
+require "action_mailer/railtie"
+require "sprockets/railtie"
+require "rails/test_unit/railtie"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line.
@@ -54,19 +51,17 @@ module <%= app_const_base %>
     # This will create an empty whitelist of attributes available for mass-assignment for all models
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
-    <%= comment_if :skip_active_record %>config.active_record.whitelist_attributes = true
+    config.active_record.whitelist_attributes = true
 
     # Specifies wether or not has_many or has_one association option :dependent => :restrict raises
     # an exception. If set to true, then an ActiveRecord::DeleteRestrictionError exception would be
     # raised. If set to false, then an error will be added on the model instead.
-    <%= comment_if :skip_active_record %>config.active_record.dependent_restrict_raises = false
+    config.active_record.dependent_restrict_raises = false
 
-<% unless options.skip_sprockets? -%>
     # Enable the asset pipeline.
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets.
     config.assets.version = '1.0'
-<% end -%>
   end
 end
