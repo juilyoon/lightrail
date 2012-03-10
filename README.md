@@ -10,6 +10,35 @@ If [Sinatra][sinatra] doesn't give you enough, but [Rails][rails] is still too m
 
 Join the mailing list by sending a message to: lightrail@librelist.com
 
+Getting Started
+---------------
+
+`gem install lightrail`
+
+Like Rails, installing the lightrail gem will install a command like utility
+called 'lightrail'. This command is in fact identical to the 'rails' command,
+but just tweaked for Lightrail defaults instead of Rails defaults.
+
+You can use 'lightrail' to create a new application skeleton just like Rails:
+
+`lightrail new myapp`
+
+The skeleton application that Lightrail generates is identical to a standard
+Rails application, with only these changes:
+
+* Gemfile pulls in lightrail instead of rails
+* application.rb pulls in lightrail instead of rails
+* ApplicationController descends from Lightrail::ActionController::Metal
+  instead of ActionController::Base. ActionView is not used or installed.
+
+Once you've created your application, run:
+
+`lightrail server`
+
+to launch a web server in the development environment (just like Rails!)
+
+You can convert an existing Rails 3 application to a Lightrail application
+by retrofitting the changes mentioned above.
 
 Lightrail::ActionController::Metal
 ----------------------------------
