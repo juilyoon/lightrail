@@ -3,8 +3,16 @@
 [![Build Status](https://secure.travis-ci.org/lightness/lightrail.png?branch=master)](http://travis-ci.org/lightness/lightrail)
 
 Lightrail is a minimalist Rails 3 stack for apps that serve primarily APIs,
-with a particular focus on JSON APIs. If [Sinatra][sinatra] doesn't give
-you enough, but [Rails][rails] is still too much, Lightrail is for you.
+with a particular focus on JSON APIs. This makes Lightrail an ideal Rails
+backend for client-heavy HTML5/JS applications, particularly "single-page"
+applications written in frameworks like:
+
+* [Backbone.js](http://documentcloud.github.com/backbone/)
+* [Ember.js](http://emberjs.com/)
+* [Spine](http://spinejs.com/)
+
+If [Sinatra][sinatra] doesn't give you enough, but [Rails][rails] is still
+too much, Lightrail is for you.
 
 [sinatra]: http://www.sinatrarb.com/
 [rails]: http://rubyonrails.org/
