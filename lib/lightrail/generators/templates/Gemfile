@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-<%= rails_gemfile_entry -%>
+gem 'lightrail', '<%= Lightrail::VERSION %>'
+
+# Bundle edge Rails instead:
+# gem 'railties', :git => 'https://github.com/rails/rails.git'
 
 <%= database_gemfile_entry -%>
 
