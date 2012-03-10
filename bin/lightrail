@@ -1,1 +1,2 @@
-require "rails/cli"
+#!/usr/bin/env ruby
+require "lightrail/cli"
