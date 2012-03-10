@@ -2,8 +2,9 @@
 ============
 [![Build Status](https://secure.travis-ci.org/lightness/lightrail.png?branch=master)](http://travis-ci.org/lightness/lightrail)
 
-Lightrail is a minimalist Ruby stack for apps that serve primarily JSON APIs.
-If [Sinatra][sinatra] doesn't give you enough, but [Rails][rails] is still too much, Lightrail is for you.
+Lightrail is a minimalist Rails 3 stack for apps that serve primarily APIs,
+with a particular focus on JSON APIs. If [Sinatra][sinatra] doesn't give
+you enough, but [Rails][rails] is still too much, Lightrail is for you.
 
 [sinatra]: http://www.sinatrarb.com/
 [rails]: http://rubyonrails.org/
@@ -200,4 +201,4 @@ Lightrail adds a `config.lightrail` namespace to your application with two main 
   * `remove_session_middlewares!` removes `ActionDispatch::Cookies`,
   `ActionDispatch::Session::CookieStore` and `ActionDispatch::Flash` middlewares.
   * `remove_browser_middlewares!` removes the `ActionDispatch::BestStandardsSupport` middleware.
-
+T
