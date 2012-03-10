@@ -203,4 +203,3 @@ Lightrail adds a `config.lightrail` namespace to your application with two main 
   * `remove_session_middlewares!` removes `ActionDispatch::Cookies`,
   `ActionDispatch::Session::CookieStore` and `ActionDispatch::Flash` middlewares.
   * `remove_browser_middlewares!` removes the `ActionDispatch::BestStandardsSupport` middleware.
-T
