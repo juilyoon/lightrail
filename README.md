@@ -60,8 +60,10 @@ It removes several irrelevant modules and also provides following additional beh
 Lightrail::Wrapper
 ------------------
 
-A wrapper functionality to make easier JSON responses.
-It is divided in three main parts:
+Wrappers are Lightrail's view replacement, and handle JSON serialization of your models.
+Instead of having a monster `#to_json` method in your model, you can factor that into a
+wrapper instead, and wrappers will automatically take care of many additional JSON
+serialization concerns for you.
 
 **Creating A Wrapper**
 
