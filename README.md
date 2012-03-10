@@ -19,7 +19,7 @@ Install the lightrail gem:
 
 Like Rails, installing the lightrail gem will install a command line utility
 called 'lightrail'. This command is in fact identical to the 'rails' command,
-but just tweaked for Lightrail defaults instead of Rails defaults.
+but tweaked for Lightrail defaults instead of Rails defaults.
 
 You can use 'lightrail' to create a new application skeleton just like Rails:
 
