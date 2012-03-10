@@ -17,7 +17,7 @@ Install the lightrail gem:
 
 `gem install lightrail`
 
-Like Rails, installing the lightrail gem will install a command like utility
+Like Rails, installing the lightrail gem will install a command line utility
 called 'lightrail'. This command is in fact identical to the 'rails' command,
 but just tweaked for Lightrail defaults instead of Rails defaults.
 
@@ -142,7 +142,7 @@ Although most of the times this will be done automatically by the controller.
 `Lightrail::Wrapper::Controller` provides several facilities to use wrappers from the controller:
 
   * `#json(resources)` is the main method.
-    Given a resource (or an array of resources) it will find the proper wrapper and render it. 
+    Given a resource (or an array of resources) it will find the proper wrapper and render it.
     Any include given at `params[:include]` will be validated and passed to the underlying wrapper.
     Consider the following action:
 
@@ -151,9 +151,9 @@ Although most of the times this will be done automatically by the controller.
       json Account.last
     end
     ```
-  
+
     When accessed as `/accounts/last` it won't return any credit card or subscription resource in the JSON, unless it is given explicitly as `/accounts/last?include=credit_cards,subscriptions` (in plural).
-  
+
     In order for the `json` method to work, a `wrapper_scope` needs to be defined.
     You can usually define it in your `ApplicationController` as follow:
 
@@ -162,11 +162,11 @@ Although most of the times this will be done automatically by the controller.
       current_user
     end
     ```
-  
+
   * `errors(resource)` is a method that makes pair with `json(resource)`.
     It basically receives a resource and render its errors.
     For instance, `errors(account)` will return `:errors => { :account => account.errors }`;
-  
+
   * `wrap_array(resources)` as the `json` method accepts extra associations to be included through `params[:include]` we need to be careful to not do `N+1` db queries.
     This can be fixed by using the `wrap_array` method that will automatically wrap the given array and preload all associations.
     For instance, you want will to do this in your `index` actions:
@@ -200,4 +200,4 @@ Lightrail adds a `config.lightrail` namespace to your application with two main 
   * `remove_session_middlewares!` removes `ActionDispatch::Cookies`,
   `ActionDispatch::Session::CookieStore` and `ActionDispatch::Flash` middlewares.
   * `remove_browser_middlewares!` removes the `ActionDispatch::BestStandardsSupport` middleware.
-  
+
