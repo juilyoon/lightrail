@@ -13,6 +13,8 @@ Join the mailing list by sending a message to: lightrail@librelist.com
 Getting Started
 ---------------
 
+Install the lightrail gem:
+
 `gem install lightrail`
 
 Like Rails, installing the lightrail gem will install a command like utility
