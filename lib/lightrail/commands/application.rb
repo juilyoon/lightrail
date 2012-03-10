@@ -20,6 +20,6 @@ else
 end
 
 require 'rubygems' if ARGV.include?("--dev")
-require 'lightrail/generators/lightrail/app/app_generator'
+require 'lightrail/generators/app_generator'
 
 Lightrail::Generators::AppGenerator.start
