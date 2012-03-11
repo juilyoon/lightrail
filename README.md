@@ -4,7 +4,7 @@
 
 Lightrail is a minimalist Rails 3 stack for apps that serve primarily APIs,
 with a particular focus on JSON APIs. This makes Lightrail an ideal Rails
-backend for client-heavy HTML5/JS applications, particularly "single-page"
+backend for client-heavy HTML5/JS applications, particularly single-page
 applications written in frameworks like [Backbone.js][backbone], [Ember.js][ember],
 and [Spine][spine].
 
