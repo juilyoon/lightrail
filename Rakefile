@@ -1,5 +1,11 @@
 #!/usr/bin/env rake
 require "bundler/gem_tasks"
-Dir["tasks/**/*.task"].each { |task| load task }
+require "rake/testtask"
 
-task :default => :spec
+Rake::TestTask.new('test') do |t|
+  t.pattern = 'test/**/*_test.rb'
+  t.warning = true
+  t.verbose = true
+end
+
+task :default => :test
