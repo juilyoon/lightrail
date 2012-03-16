@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
 
   # This gives us ActionPack and ActiveSupport
   gem.add_runtime_dependency 'railties', '~> 3.2'
+  gem.add_runtime_dependency 'active_model_serializers'
 end
