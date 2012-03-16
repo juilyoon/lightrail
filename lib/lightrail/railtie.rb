@@ -1,4 +1,5 @@
 require "lightrail/action_controller"
+require "lightrail/wrapper"
 require "rails/railtie"
 
 module Lightrail
